@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Table from './Table';
 import CustomTacoForm from './CustomTacoForm';
 import RandomTacoForm from './RandomTacoForm';
-import { Tab, Tabs } from 'react-bootstrap';
+import { Tab, Tabs, Navbar } from 'react-bootstrap';
 
 class App extends Component {
 	constructor(props) {
@@ -62,18 +62,27 @@ class App extends Component {
 		const { tacos } = this.state;
 
 		return (
-			<div className="container">
-				<h2>Make a Taco</h2>
-				<Tabs defaultActiveKey="custom" id="uncontrolled-tab-example">
-					<Tab eventKey="custom" title="Make a Custom Taco">
-						<CustomTacoForm handleSubmit={this.handleSubmit} data={this.data} />
-					</Tab>
-					<Tab eventKey="random" title="Generate a Random Taco">
-						<RandomTacoForm handleSubmit={this.handleSubmit} data={this.data} />
-					</Tab>
-				</Tabs>
-				<Table tacoData={tacos} removeTaco={this.removeTaco} />
-				{this.renderNoEntries()}
+			<div>
+				<Navbar bg="dark" variant="dark" sticky="top">
+					<Navbar.Brand href="#home">
+						<img alt="" src="/logo.png" width="50" height="50" className="d-inline-block" />
+						{' TACO ASSEMBLY!'}
+					</Navbar.Brand>
+				</Navbar>
+				<div className="container">
+					<h2>Make a Taco</h2>
+					<Tabs defaultActiveKey="custom" id="uncontrolled-tab-example">
+						<Tab eventKey="custom" title="Make a Custom Taco">
+							<CustomTacoForm handleSubmit={this.handleSubmit} data={this.data} />
+						</Tab>
+						<Tab eventKey="random" title="Generate a Random Taco">
+							<RandomTacoForm handleSubmit={this.handleSubmit} data={this.data} />
+						</Tab>
+					</Tabs>
+					<hr />
+					<Table tacoData={tacos} removeTaco={this.removeTaco} />
+					{this.renderNoEntries()}
+				</div>
 			</div>
 		);
 	}
