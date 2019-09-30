@@ -19,7 +19,11 @@ A web page to compile a list of custom tacos developed by you and generated rand
 
 ## Usage
 
- - Create and add your own custom taco
- - Provide specifications to generate custom taco
+ - Create and add your own custom tacos
+ ![Add Custom](./AddCustom1.png)
+ ![Add Custom](./AddCustom2.png)
+ - Provide specifications to generate custom tacos
+ ![Add Random](./Generate1.png)
+ ![Add Random](./Generate2.png)
  - Enjoy!
- 
+ ![My Tacos](./MyTacos.png)
