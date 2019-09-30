@@ -17,7 +17,7 @@ class RandomTacoForm extends Component {
 	submitForm = () => {
 		const { numCondiments, numMixins } = this.state;
 		const myTaco = {
-			name: '',
+			name: this.state.name,
 			shell: _.sample(this.props.data.shells),
 			base: _.sample(this.props.data.baseLayers),
 			mixins: _.sampleSize(this.props.data.mixins, numMixins.label),
