@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Table from './Table';
-import Form from './Form';
+import CustomTacoForm from './CustomTacoForm';
+import RandomTacoForm from './RandomTacoForm';
+import { Tab, Tabs } from 'react-bootstrap';
 
 class App extends Component {
 	constructor(props) {
@@ -28,13 +30,14 @@ class App extends Component {
 					label: result[i].name
 				});
 			}
-			console.log(this.data);
 		});
 	};
+
 	componentDidMount() {
 		const ingredients = [ 'shells', 'baseLayers', 'mixins', 'condiments', 'seasonings' ];
 		ingredients.forEach((item) => this.populateData(item));
 	}
+
 	removeCharacter = (index) => {
 		const { characters } = this.state;
 
@@ -49,14 +52,29 @@ class App extends Component {
 		this.setState({ characters: [ ...this.state.characters, character ] });
 	};
 
+	renderNoEntries() {
+		if (this.state.characters.length) {
+			return null;
+		}
+		return <p>No tacos to show. Create a delicious one above!</p>;
+	}
+
 	render() {
 		const { characters } = this.state;
 
 		return (
 			<div className="container">
 				<h2>Make a Taco</h2>
-				<Form handleSubmit={this.handleSubmit} data={this.data} />
+				<Tabs defaultActiveKey="custom" id="uncontrolled-tab-example">
+					<Tab eventKey="custom" title="Make a Custom Taco">
+						<CustomTacoForm handleSubmit={this.handleSubmit} data={this.data} />
+					</Tab>
+					<Tab eventKey="random" title="Generate a Random Taco">
+						<RandomTacoForm handleSubmit={this.handleSubmit} data={this.data} />
+					</Tab>
+				</Tabs>
 				<Table characterData={characters} removeCharacter={this.removeCharacter} />
+				{this.renderNoEntries()}
 			</div>
 		);
 	}

@@ -1,26 +1,6 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
-const baseOps = [
-	{ value: 'chocolate', label: 'Chocolate' },
-	{ value: 'strawberry', label: 'Strawberry' },
-	{ value: 'vanilla', label: 'Vanilla' }
-];
-const mixinOps = [
-	{ value: 'chocolate', label: 'Chocolate' },
-	{ value: 'strawberry', label: 'Strawberry' },
-	{ value: 'vanilla', label: 'Vanilla' }
-];
-const seasoningOps = [
-	{ value: 'chocolate', label: 'Chocolate' },
-	{ value: 'strawberry', label: 'Strawberry' },
-	{ value: 'vanilla', label: 'Vanilla' }
-];
-const condimentOps = [
-	{ value: 'chocolate', label: 'Chocolate' },
-	{ value: 'strawberry', label: 'Strawberry' },
-	{ value: 'vanilla', label: 'Vanilla' }
-];
-class Form extends Component {
+class CustomTacoForm extends Component {
 	constructor(props) {
 		super(props);
 
@@ -54,7 +34,6 @@ class Form extends Component {
 
 	render() {
 		const { name, shell, base, mixins, seasoning, condiments } = this.state;
-		console.log(shell);
 		return (
 			<form>
 				{/* Name */}
@@ -109,10 +88,10 @@ class Form extends Component {
 				/>
 				<br />
 				{/* Submit Button */}
-				<input type="button" value="Add Taco" onClick={this.submitForm} />
+				<input type="button" value="Add Custom Taco" onClick={this.submitForm} />
 			</form>
 		);
 	}
 }
 
-export default Form;
+export default CustomTacoForm;
