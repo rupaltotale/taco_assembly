@@ -33,7 +33,7 @@ class Form extends Component {
 			name: '',
 			shell: shellOps[0],
 			base: baseOps[0],
-			mixin: null,
+			mixins: null,
 			seasoning: seasoningOps[0],
 			condiments: null
 		};
@@ -42,8 +42,11 @@ class Form extends Component {
 	}
 
 	submitForm = () => {
-		this.props.handleSubmit(this.state);
-		this.setState(this.initialState);
+		const { mixins, condiments } = this.state;
+		if (mixins && condiments) {
+			this.props.handleSubmit(this.state);
+			this.setState(this.initialState);
+		} else alert('Please add at least one condiment and one mixin');
 	};
 
 	handleChange = (event) => {

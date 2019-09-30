@@ -16,15 +16,22 @@ const TableHeader = () => {
 };
 
 const TableBody = (props) => {
+	const displayItems = (items) => {
+		if (items.length === 1) return items[0].label;
+		let string = '';
+		for (let i = 0; i < items.length - 1; i++) string += items[i].label + ', ';
+		string += 'and ' + items[items.length - 1].label;
+		return string;
+	};
 	const rows = props.characterData.map((row, index) => {
 		return (
 			<tr key={index}>
 				<td>{row.name}</td>
-				<td>{row.shell}</td>
+				<td>{row.shell.label}</td>
 				<td>{row.base.label}</td>
-				<td>{row.mixins[0].label}</td>
+				<td>{displayItems(row.mixins)}</td>
 				<td>{row.seasoning.label}</td>
-				<td>{row.condiments[0].label}</td>
+				<td>{displayItems(row.condiments)}</td>
 				<td>
 					<button onClick={() => props.removeCharacter(index)}>Delete</button>
 				</td>
