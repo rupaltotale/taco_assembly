@@ -17,14 +17,13 @@ class App extends Component {
 		};
 	}
 	state = {
-		characters: []
+		tacos: []
 	};
 
 	populateData = (item) => {
 		const url = 'https://ct-tacoapi.azurewebsites.net/' + item;
 		fetch(url).then((result) => result.json()).then((result) => {
-			var i = 0;
-			for (i = 0; i < result.length; i++) {
+			for (var i = 0; i < result.length; i++) {
 				this.data[item].push({
 					value: result[i].slug,
 					label: result[i].name
@@ -38,29 +37,29 @@ class App extends Component {
 		ingredients.forEach((item) => this.populateData(item));
 	}
 
-	removeCharacter = (index) => {
-		const { characters } = this.state;
+	removeTaco = (index) => {
+		const { tacos } = this.state;
 
 		this.setState({
-			characters: characters.filter((character, i) => {
+			tacos: tacos.filter((taco, i) => {
 				return i !== index;
 			})
 		});
 	};
 
-	handleSubmit = (character) => {
-		this.setState({ characters: [ ...this.state.characters, character ] });
+	handleSubmit = (taco) => {
+		this.setState({ tacos: [ ...this.state.tacos, taco ] });
 	};
 
 	renderNoEntries() {
-		if (this.state.characters.length) {
+		if (this.state.tacos.length) {
 			return null;
 		}
 		return <p>No tacos to show. Create a delicious one above!</p>;
 	}
 
 	render() {
-		const { characters } = this.state;
+		const { tacos } = this.state;
 
 		return (
 			<div className="container">
@@ -73,7 +72,7 @@ class App extends Component {
 						<RandomTacoForm handleSubmit={this.handleSubmit} data={this.data} />
 					</Tab>
 				</Tabs>
-				<Table characterData={characters} removeCharacter={this.removeCharacter} />
+				<Table tacoData={tacos} removeTaco={this.removeTaco} />
 				{this.renderNoEntries()}
 			</div>
 		);

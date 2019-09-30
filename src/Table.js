@@ -23,7 +23,7 @@ const TableBody = (props) => {
 		string += 'and ' + items[items.length - 1].label;
 		return string;
 	};
-	const rows = props.characterData.map((row, index) => {
+	const rows = props.tacoData.map((row, index) => {
 		return (
 			<tr key={index}>
 				<td>{row.name === '' ? 'Taco #' + (index + 1) : row.name}</td>
@@ -33,7 +33,7 @@ const TableBody = (props) => {
 				<td>{row.seasoning.label}</td>
 				<td>{displayItems(row.condiments)}</td>
 				<td>
-					<button onClick={() => props.removeCharacter(index)}>Delete</button>
+					<button onClick={() => props.removeTaco(index)}>Delete</button>
 				</td>
 			</tr>
 		);
@@ -43,13 +43,13 @@ const TableBody = (props) => {
 
 class Table extends Component {
 	render() {
-		const { characterData, removeCharacter } = this.props;
+		const { tacoData, removeTaco } = this.props;
 		return (
 			<div>
 				<h2>My Tacos</h2>
 				<table>
 					<TableHeader />
-					<TableBody characterData={characterData} removeCharacter={removeCharacter} />
+					<TableBody tacoData={tacoData} removeTaco={removeTaco} />
 				</table>
 			</div>
 		);
