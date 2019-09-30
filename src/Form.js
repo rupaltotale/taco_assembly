@@ -67,7 +67,7 @@ class Form extends Component {
 					onChange={(shell) => {
 						this.setState({ shell });
 					}}
-					options={this.props.data.shellOps}
+					options={this.props.data.shells}
 				/>
 				{/* Base */}
 				<label>Base Layer*</label>
@@ -76,7 +76,7 @@ class Form extends Component {
 					onChange={(base) => {
 						this.setState({ base });
 					}}
-					options={baseOps}
+					options={this.props.data.baseLayers}
 				/>
 				{/* Mixin(s) */}
 				<label>Mixins (1 - 2)*</label>
@@ -86,7 +86,7 @@ class Form extends Component {
 					onChange={(mixins) => {
 						if (!mixins || mixins.length < 3) this.setState({ mixins });
 					}}
-					options={mixinOps}
+					options={this.props.data.mixins}
 				/>
 				{/* Seasoning(s) */}
 				<label>Seasoning*</label>
@@ -95,7 +95,7 @@ class Form extends Component {
 					onChange={(seasoning) => {
 						this.setState({ seasoning });
 					}}
-					options={seasoningOps}
+					options={this.props.data.seasonings}
 				/>
 				{/* Condiment(s) */}
 				<label>Condiments (1 - 3)*</label>
@@ -105,7 +105,7 @@ class Form extends Component {
 					onChange={(condiments) => {
 						if (!condiments || condiments.length < 4) this.setState({ condiments });
 					}}
-					options={condimentOps}
+					options={this.props.data.condiments}
 				/>
 				<br />
 				{/* Submit Button */}

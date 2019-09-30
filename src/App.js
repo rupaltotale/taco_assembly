@@ -7,25 +7,33 @@ class App extends Component {
 		super(props);
 
 		this.data = {
-			shellOps: []
+			shells: [],
+			baseLayers: [],
+			mixins: [],
+			condiments: [],
+			seasonings: []
 		};
 	}
 	state = {
 		characters: []
 	};
-	componentDidMount() {
-		const url = 'https://ct-tacoapi.azurewebsites.net/shells';
 
+	populateData = (item) => {
+		const url = 'https://ct-tacoapi.azurewebsites.net/' + item;
 		fetch(url).then((result) => result.json()).then((result) => {
 			var i = 0;
 			for (i = 0; i < result.length; i++) {
-				this.data.shellOps.push({
+				this.data[item].push({
 					value: result[i].slug,
 					label: result[i].name
 				});
 			}
 			console.log(this.data);
 		});
+	};
+	componentDidMount() {
+		const ingredients = [ 'shells', 'baseLayers', 'mixins', 'condiments', 'seasonings' ];
+		ingredients.forEach((item) => this.populateData(item));
 	}
 	removeCharacter = (index) => {
 		const { characters } = this.state;
