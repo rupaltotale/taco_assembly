@@ -41,9 +41,9 @@ class RandomTacoForm extends Component {
 		return (
 			<form>
 				{/* Name */}
-				<label>Name</label>
+				<label>Taco Name</label>
 				<input type="text" name="name" value={name} onChange={this.handleChange} />
-				{/* Mixin(s) */}
+				{/* Number of Mixin(s) */}
 				<label>Number of Mixins</label>
 				<Select
 					value={numMixins}
@@ -52,7 +52,7 @@ class RandomTacoForm extends Component {
 					}}
 					options={[ { label: 1, value: 1 }, { label: 2, value: 2 } ]}
 				/>
-				{/* Condiment(s) */}
+				{/* Number of Condiment(s) */}
 				<label>Number of Condiments</label>
 				<Select
 					value={numCondiments}

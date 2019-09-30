@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Table from './Table';
 import CustomTacoForm from './CustomTacoForm';
 import RandomTacoForm from './RandomTacoForm';
-import { Tab, Tabs, Navbar } from 'react-bootstrap';
+import { Tab, Tabs, Navbar, Alert } from 'react-bootstrap';
 
 class App extends Component {
 	constructor(props) {
@@ -51,11 +51,12 @@ class App extends Component {
 		this.setState({ tacos: [ ...this.state.tacos, taco ] });
 	};
 
+	// If there are no tacos created or all created tacos have been deleted, inform the user about this
 	renderNoEntries() {
 		if (this.state.tacos.length) {
 			return null;
 		}
-		return <p>No tacos to show. Create a delicious one above!</p>;
+		return <Alert variant={'secondary'}>No tacos to show. Create a delicious one above!</Alert>;
 	}
 
 	render() {
@@ -63,6 +64,7 @@ class App extends Component {
 
 		return (
 			<div>
+				{/* Navbar */}
 				<Navbar bg="dark" variant="dark" sticky="top">
 					<Navbar.Brand href="#home">
 						<img alt="" src="/logo.png" width="50" height="50" className="d-inline-block" />
@@ -70,6 +72,7 @@ class App extends Component {
 					</Navbar.Brand>
 				</Navbar>
 				<div className="container">
+					{/* Taco creation tabs */}
 					<h2>Make a Taco</h2>
 					<Tabs defaultActiveKey="custom" id="uncontrolled-tab-example">
 						<Tab eventKey="custom" title="Make a Custom Taco">
@@ -80,6 +83,7 @@ class App extends Component {
 						</Tab>
 					</Tabs>
 					<hr />
+					{/* Created Tacos Table */}
 					<Table tacoData={tacos} removeTaco={this.removeTaco} />
 					{this.renderNoEntries()}
 				</div>

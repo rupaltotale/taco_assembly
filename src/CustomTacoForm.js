@@ -37,7 +37,7 @@ class CustomTacoForm extends Component {
 		return (
 			<form>
 				{/* Name */}
-				<label>Name</label>
+				<label>Taco Name</label>
 				<input type="text" name="name" value={name} onChange={this.handleChange} />
 				{/* Shell */}
 				<label>Shell*</label>
