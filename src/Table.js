@@ -26,7 +26,7 @@ const TableBody = (props) => {
 	const rows = props.characterData.map((row, index) => {
 		return (
 			<tr key={index}>
-				<td>{row.name}</td>
+				<td>{row.name === '' ? 'Taco #' + (index + 1) : row.name}</td>
 				<td>{row.shell.label}</td>
 				<td>{row.base.label}</td>
 				<td>{displayItems(row.mixins)}</td>
